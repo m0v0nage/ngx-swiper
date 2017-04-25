@@ -1,0 +1,27 @@
+{
+  "name": "ngx-swiper",
+  "version": "0.1.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m0v0nage/ngx-swiper"
+  },
+  "author": {
+    "name": "Matthew Vaughan",
+    "email": "m0v0nage@gmail.com"
+  },
+  "keywords": [
+    "angular", "swiper", "scroller", "carousel"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m0v0nage/ngx-swiper/issues"
+  },
+  "module": "ngx-swiper.js",
+  "typings": "ngx-swiper.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4",
+    "jquery": "^3.2.1"
+  }
+}

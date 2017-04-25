@@ -1,0 +1,20 @@
+.swiper-container {
+  overflow: hidden;
+  white-space: nowrap;
+  /*position: relative;*/
+}
+
+.swiper-scroller {
+  position: relative;
+}
+
+.swipeable {
+  display: inline-block;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.swipeable:not(:first-child) {
+  margin-left: 20px;
+}

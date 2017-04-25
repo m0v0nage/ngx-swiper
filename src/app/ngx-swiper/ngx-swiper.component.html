@@ -1,0 +1,8 @@
+<div class="swiper-container">
+<div #scroller class="swiper-scroller">
+  <div #swipeableItems *ngFor="let swipeable of swipeableData" class="swipeable" (click)="centerItem($event)">
+    <ng-container [ngTemplateOutlet]="swipeableTemplate.template" [ngTemplateOutletContext]="swipeable">
+    </ng-container>
+  </div>
+</div>
+</div>
