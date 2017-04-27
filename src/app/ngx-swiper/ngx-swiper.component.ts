@@ -41,21 +41,16 @@ export class NgxSwiperComponent implements OnInit {
     let list = this.swipeableItems.toArray().map(si => si.nativeElement);
     let index = list.indexOf(this.centered);
     index = index + count >= list.length ? list.length - 1 : index + count;
-    let element = list[index];
-    this.centerItem(element);
+    this.centerItemByIndex(index);
   }
 
   backwards(count) {
     let list = this.swipeableItems.toArray().map(si => si.nativeElement);
     let index = list.indexOf(this.centered);
     index = index - count < 0 ? 0 : index - count;
-    let element = list[index];
-    this.centerItem(element);
+    this.centerItemByIndex(index);
   }
 
-  ngAfterViewInit() {
-    //this.centerItem(this.swipeableItems.first.nativeElement);
-  }
 
   centerItemByIndex(index: number) {
     this.centerItem(this.swipeableItems.toArray()[index].nativeElement);
@@ -77,8 +72,11 @@ export class NgxSwiperComponent implements OnInit {
     if (animated)
       return;
 
-    this.centered = element;
     let index = this.swipeableItems.toArray().map(si => si.nativeElement).indexOf(element);
+    if (this.swipeableData[index]['disabled']) {
+      return;
+    }
+    this.centered = element;
     this.newCentered.emit({ index: index, data: this.swipeableData[index]});
 
     this.swipeableData.forEach(sd => {
