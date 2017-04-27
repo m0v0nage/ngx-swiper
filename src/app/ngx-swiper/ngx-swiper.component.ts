@@ -22,12 +22,13 @@ export class NgxSwiperComponent implements OnInit {
 
   private centered: HTMLElement;
 
+  public offsetX: number;
+
   constructor() { }
 
   ngOnInit() {
     if (this.move) {
       this.move.subscribe(m => {
-        console.log(m);
         if(m.direction == 'forward') {
           this.forwards(m.count);
         } else if (m.direction == 'back') {
@@ -35,6 +36,26 @@ export class NgxSwiperComponent implements OnInit {
         }
       });
     }
+  }
+
+  onPanStart(event) {
+    this.offsetX = this.swipeableItems.first.nativeElement.offsetLeft;
+  }
+
+  onPanLeft(event) {
+    this.swipeableItems.forEach(si => {
+      $(si.nativeElement).css({ left: this.offsetX - event.distance});
+    });
+  }
+
+  onPanRight(event) {
+    this.swipeableItems.forEach(si => {
+      $(si.nativeElement).css({ left: this.offsetX + event.distance});
+    });
+  }
+
+  onPanEnd(event) {
+    this.offsetX = this.swipeableItems.first.nativeElement.offsetLeft;
   }
 
   forwards(count) {
@@ -50,7 +71,6 @@ export class NgxSwiperComponent implements OnInit {
     index = index - count < 0 ? 0 : index - count;
     this.centerItemByIndex(index);
   }
-
 
   centerItemByIndex(index: number) {
     this.centerItem(this.swipeableItems.toArray()[index].nativeElement);

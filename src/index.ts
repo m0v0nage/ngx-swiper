@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxSwiperComponent } from './app/ngx-swiper/ngx-swiper.component';
 import { SwipeableDirective } from './app/swipeable.directive';
+import 'hammerjs';
 
 export * from './app/ngx-swiper/ngx-swiper.component';
 export * from './app/swipeable.directive';

@@ -70,7 +70,8 @@ gulp.task('rollup', function () {
       external: [
         '@angular/core',
         '@angular/common',
-		'jquery'
+        'jquery',
+        'hammerjs'
       ],
       format: 'es'
     }))

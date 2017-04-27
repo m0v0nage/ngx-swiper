@@ -1,5 +1,5 @@
 <div class="swiper-container">
-<div #scroller class="swiper-scroller">
+<div #scroller class="swiper-scroller" (panleft)="onPanLeft($event)" (panright)="onPanRight($event)" (panstart)="onPanStart($event)" (panend)="onPanEnd($event)">
   <div #swipeableItems *ngFor="let swipeable of swipeableData" [ngClass]="{'swipeable': true}" (click)="centerItem($event.currentTarget)">
     <ng-container [ngTemplateOutlet]="swipeableTemplate.template" [ngTemplateOutletContext]="{ swipeable: swipeable, centered: swipeable.centered }">
     </ng-container>
