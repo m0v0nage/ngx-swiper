@@ -23,6 +23,7 @@ export class NgxSwiperComponent implements OnInit {
   private centered: HTMLElement;
 
   public offsetX: number;
+  private lastDist: number = 0;
 
   constructor() { }
 
@@ -42,20 +43,17 @@ export class NgxSwiperComponent implements OnInit {
     this.offsetX = this.swipeableItems.first.nativeElement.offsetLeft;
   }
 
-  onPanLeft(event) {
-    this.swipeableItems.forEach(si => {
-      $(si.nativeElement).css({ left: this.offsetX - event.distance});
-    });
-  }
+  onPan(event) {
+    console.log(event);
 
-  onPanRight(event) {
     this.swipeableItems.forEach(si => {
-      $(si.nativeElement).css({ left: this.offsetX + event.distance});
+      $(si.nativeElement).css({ left: this.offsetX + (event.distance * (event.offsetDirection == 2 ? -1 : 1)) });
     });
   }
 
   onPanEnd(event) {
     this.offsetX = this.swipeableItems.first.nativeElement.offsetLeft;
+    this.lastDist = 0;
   }
 
   forwards(count) {
