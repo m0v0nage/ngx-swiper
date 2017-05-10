@@ -44,8 +44,6 @@ export class NgxSwiperComponent implements OnInit {
   }
 
   onPan(event) {
-    console.log(event);
-
     this.swipeableItems.forEach(si => {
       $(si.nativeElement).css({ left: this.offsetX + (event.distance * (event.offsetDirection == 2 ? -1 : 1)) });
     });
