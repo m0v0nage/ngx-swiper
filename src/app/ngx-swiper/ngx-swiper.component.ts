@@ -40,6 +40,7 @@ export class NgxSwiperComponent implements OnInit {
   }
 
   onPanStart(event) {
+    $('body').css("user-select", "none");
     this.offsetX = this.swipeableItems.first.nativeElement.offsetLeft;
   }
 
@@ -50,6 +51,7 @@ export class NgxSwiperComponent implements OnInit {
   }
 
   onPanEnd(event) {
+    $('body').css("user-select", "auto");
     this.offsetX = this.swipeableItems.first.nativeElement.offsetLeft;
     this.lastDist = 0;
   }
